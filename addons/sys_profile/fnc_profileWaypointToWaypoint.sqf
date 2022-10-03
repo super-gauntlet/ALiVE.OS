@@ -59,6 +59,17 @@ if (!_pathfindingEnabled &&
 	_radius = -1;
     };
 };
+if (
+    !isNull (assignedVehicle leader _group) &&
+    (assignedVehicle leader _group) isKindOf "LandVehicle"
+) then {
+    if (!_pathfindingEnabled) then {
+        private _road = [_position, 200] call BIS_fnc_nearestRoad;
+        if !(isNull _road) then {
+            _position = (getPos _road) select [0, 2];
+    };
+    _radius = -1;
+};
 
 _position set [2,0];
 
